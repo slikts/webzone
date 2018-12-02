@@ -6,7 +6,7 @@ import parse from "../parse/parse"
 import { getBoxSize } from "../util"
 
 const randoms = Array.from({ length: 20 }, () => Math.random())
-const seeds = () => new Circulator([...randoms])
+const seeds = () => new Circulator(randoms)
 
 const Word = source => (text, mirror = false) => {
   const boxSize = getBoxSize()

@@ -13,6 +13,9 @@ a {
   color: #0366d6;
   text-decoration: none;
 }
+b {
+  font-weight: bold;
+}
 a:hover {
   text-decoration: underline;
 }
