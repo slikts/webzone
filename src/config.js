@@ -1,6 +1,7 @@
 export default {
   loop: 1,
   mirror: 1,
+  drop: 1,
   hide: 1,
   speedFactor: 2,
   hideDelay: 3000,
