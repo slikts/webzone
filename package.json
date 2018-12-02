@@ -8,7 +8,8 @@
     "test:watch": "jest --watch --runInBand --verbose false",
     "build": "webpack",
     "build:prod": "webpack --mode production",
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "publish": "npm run build:prod && npx gh-pages -d dist"
   },
   "keywords": [],
   "author": "slikts <dabas@untu.ms>",
