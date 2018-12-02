@@ -1,0 +1,25 @@
+{
+  "extends": "@slikts/prettier",
+  "env": {
+    "jest": true,
+    "browser": true
+  },
+  "rules": {
+    "prettier/prettier": [
+      "warn",
+      {
+        "trailingComma": "all",
+        "semi": false,
+        "printWidth": 70
+      }
+    ],
+    "no-param-reassign": [2, { "props": false }],
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off",
+    "no-void": "off"
+  },
+  "globals": {
+    "GroupEffect": false,
+    "SequenceEffect": false
+  }
+}
