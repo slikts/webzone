@@ -104,7 +104,6 @@ code {
 }
 
 div.wrapper {
-  background: var(--bg2);
   color: var(--text);
   margin: auto;
   height: 100%;
@@ -210,10 +209,10 @@ a.uparrow {
   bottom: 0;
   border-bottom: var(--size) solid var(--bg2);
 }
-#projects .heading {
+#projects h1.heading {
   position: relative;
 }
-#projects .heading:after {
+#projects h1.heading:after {
   content: " ";
   display: block;
   height: 40px;
@@ -295,9 +294,6 @@ h1.heading,
   border-bottom-color: rgb(var(--bg));
 }
 
-#projects {
-  background: var(--bg2);
-}
 #about .section-content {
   text-align: center;
 }
@@ -321,6 +317,9 @@ h1.heading,
 }
 #projects .section-content {
   overflow: hidden;
+}
+#projects .section-bg {
+  background: var(--bg2);
 }
 .section-contact p,
 .section-portrait p {
@@ -422,5 +421,45 @@ h1.heading,
   #about {
     padding-bottom: 2rem;
     overflow: hidden;
+  }
+  #Animation-root .Animation {
+    transform: scale(0.5);
+  }
+}
+@media screen and (max-width: 960px) and (orientation: landscape) {
+  #Animation-root .Animation {
+    transform: scale(0.5) translateY(-50%);
+  }
+}
+@media screen and (max-width: 560px) {
+  #about-heading .container {
+    position: static !important;
+  }
+  section.other h2.heading {
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+  }
+  section.other {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    margin-left: -1rem;
+  }
+  section.other ul {
+    margin-left: -1rem;
+  }
+
+  #Animation-root .Animation {
+    transform: scale(0.3) translateY(-50%);
+  }
+}
+#projects h1.heading {
+  background: transparent;
+}
+
+@media screen and (orientation: landscape) and (max-width: 560px) {
+  #Animation-root .Animation {
+    transform: scale(0.3) translateY(-100%);
   }
 }
