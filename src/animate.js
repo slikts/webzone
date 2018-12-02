@@ -16,11 +16,12 @@ export const animateLetter = (letter, mirror = false) => {
 
   const shapeSteps = shapes.map((shape, i) => {
     const shapeRect = shape.getBoundingClientRect()
-    const computedStyle = window.getComputedStyle(shape)
     const { speedFactor } = config
-    const yOff = parseInt(shape.dataset.y, 10)
-    const shapeHeight = parseInt(shape.dataset.height, 10)
-    const shapeWidth = parseInt(shape.dataset.width, 10)
+    const yOff = +shape.dataset.y
+    const shapeX = +shape.dataset.x
+    const shapeY = +shape.dataset.y
+    const shapeHeight = +shape.dataset.height
+    const shapeWidth = +shape.dataset.width
     const letterHeight = letterRect.height / boxSize
     const yFall =
       letterHeight -
@@ -28,8 +29,7 @@ export const animateLetter = (letter, mirror = false) => {
     const offsetFall = offsetAbs / boxSize
     const fallDistance = (offsetFall + yFall) * boxSize
     const offsetLeft = letterRect.width / 2
-    const leftMid =
-      (shapeWidth * boxSize) / 2 + parseInt(computedStyle.left, 10)
+    const leftMid = (shapeWidth * boxSize) / 2 + shapeX * boxSize
     const slideDistance = Math.abs(offsetLeft - leftMid)
     const Effect = (...args) => new KeyframeEffect(shape, ...args)
     const initLeftOffset = letterRect.width / 2 - shapeRect.width / 2
@@ -68,7 +68,7 @@ export const animateLetter = (letter, mirror = false) => {
     )
     const slideEffect = Effect(
       {
-        left: [`${initLeftOffset}px`, computedStyle.left],
+        left: [`${initLeftOffset}px`, `${shapeX * boxSize}px`],
       },
       {
         duration: slideDistance * baseSpeed,
@@ -98,7 +98,10 @@ export const animateLetter = (letter, mirror = false) => {
       fallDistance * actionSpeed - preDropDistanceAbs * actionSpeed
     const dropEffect = Effect(
       {
-        top: [`${offsetTop + preDropDistance}px`, computedStyle.top],
+        top: [
+          `${offsetTop + preDropDistance}px`,
+          `${shapeY * boxSize}px`,
+        ],
       },
       {
         duration: fallDuration,
@@ -136,9 +139,8 @@ const blinkIn = el =>
 
 export const hideLetter = (letter, mirror) => {
   const cover = letter.querySelector(`.Cover`)
-  const letterRect = letter.getBoundingClientRect()
   const container = letter.querySelector(`.Letter-container`)
-  const lines = letterRect.height / boxSize
+  const lines = +letter.dataset.height
   const mirrorDir = mirror ? -1 : 1
   const steps = Array.from({ length: lines }, (_, n) => {
     const top = `${(n + 1) * boxSize * mirrorDir}px`
